@@ -329,6 +329,14 @@ model = DataParallel(model, device_ids=[0, 1, 2, 3])
 - Lower batch size → Lower throughput, Lower latency
 - Need to balance based on use case
 
+### GPU sharing and online versus batch inference
+
+**Online inference** usually chases **tail latency**: small batches or batch size one, bursty traffic, and GPUs that look “underutilized” in averages while still mattering at p99. **Batch scoring** (nightly features, backfills, re-embedding corpora) chases **throughput** and happily fills a GPU for minutes.
+
+When both land on the same fleet, you get classic contention: a long batch job can steal memory bandwidth and jitter the latency of live requests. Teams reduce pain by **splitting pools** (nodes or queues labeled online versus batch), **hard quotas** per namespace, or **time windows** that forbid heavy batch during peak hours. Smaller orgs sometimes accept shared GPUs but should still **measure queue depth** and p99 side by side, not only average utilization.
+
+If you merge training and serving on shared accelerators, be explicit about **preemption and cost**: training is elastic; user facing inference is not. Treat that boundary as a product decision, not only a scheduler detail.
+
 ---
 
 ## Why training and serving should match
@@ -1142,6 +1150,14 @@ def predict_with_fallback(features):
         # Fallback to simple model
         return simple_model.predict(features)
 ```
+
+### Multi region inference and disaster recovery for models
+
+**Multi region** usually means choosing between **regional replicas** that serve the same promoted build (one pipeline; each region pulls the same versioned image and weights) and harder **active active** setups where traffic and data truly split. For ML, add **embedding and index freshness**: a vector store in region B that lags region A can look “up” while answers drift.
+
+**Disaster recovery** for models is mostly **recovering the right artifact fast**: registry pin, object storage replication, and a runbook that says how to repoint DNS or the load balancer to a known good version. Agree on **RTO and RPO** in human terms: how long can scoring be down, and how old a model or index is acceptable during a cutover? Separate “**inference unavailable**” (fail over replicas, serve a simpler model) from “**wrong model in every region**” (freeze promotion, roll back via registry, replay shadow traffic before widening again).
+
+Data residency and **cross region egress** can dominate cost; design regional boundaries before you promise global low latency on giant checkpoints.
 
 ### Monitoring & Observability
 
