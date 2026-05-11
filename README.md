@@ -114,9 +114,17 @@ This repository provides a structured learning path for machine learning, organi
 **Goal**: Build the mathematical and programming foundation needed for ML
 
 - **00-prerequisites**
-  - Python Basics (Variables, Data Types, Control Flow, Functions, OOP)
+  - **AI programming with Python**
+  - Variables, conditional statements, loops, lists, and dictionaries
+  - Functions and functional programming
+  - Introduction to OOP: classes and objects; class and object theory; class and object implementation
+  - Iterators and generators; lambda functions; `map`, `filter`, and `reduce`
+  - File handling: reading and writing files; read position (`tell`, `seek`)
+  - Inheritance and polymorphism; encapsulation and abstraction
+  - Practice problems based on file handling
+  - Exceptions: `try` / `except` / `else` / `finally`
+  - **Project:** Movie script generator
   - Time Complexity & Algorithm Efficiency (Big O notation)
-  - Iterators & Generators (Memory-efficient data processing)
   - GUI Development with tkinter
   - Essential Mathematics (Linear Algebra including Tensors, Statistics, Calculus basics)
   - Computational Math: Python code examples alongside theory for better intuition
@@ -125,12 +133,13 @@ This repository provides a structured learning path for machine learning, organi
 ### Phase 1: Data Fundamentals
 **Goal**: Master data manipulation and visualization
 
-- **01-python-for-data-science**
-  - NumPy: Arrays, operations, broadcasting
-  - Pandas: DataFrames, data manipulation, cleaning
+- **01-python-for-data-science** — **Data processing & visualization (ML toolbox)**
+  - **NumPy:** fundamentals, `ndarray`, attributes and dtypes; array creation (existing data, from scratch, ranges, random); indexing, slicing, copies, and advanced iteration; reshaping and transformations; broadcasting; sorting, searching, and counting; arithmetic, mathematical, and logical operations; statistical analysis and linear algebra basics
+  - **Pandas:** Series and DataFrame; CSV/Excel and file handling; `loc` / `iloc`, indexing, and filtering; modifying data (add/drop rows and columns, assign values); duplicates, missing data, and datetime operations; apply functions, aggregation, and `GroupBy`
   - Polars: High-performance data manipulation (10-100x faster than Pandas for large datasets)
   - Dask: Parallel Pandas for larger-than-memory datasets
-  - Matplotlib & Seaborn: Data visualization
+  - **Matplotlib:** line, scatter, histogram, bar, and pie plots; Matplotlib & Seaborn for broader visualization
+  - **Project:** Build a machine learning model from scratch (see `00-prerequisites` NumPy neural network tutorial and `02-introduction-to-ml` first ML project)
   - Plotly & Dash: Interactive visualizations and web applications
   - Streamlit: Building interactive dashboards and ML applications
   - Flask: Web applications and REST APIs
