@@ -53,7 +53,7 @@
 | **AI Engineer** | Generalist AI | 25-38 months | 00-15, 19-21, 22-24, 25 | [View Guide →](resources/career_roadmap_guide.md#ai-engineer-generalist) |
 | **Data Engineer** | Data Infrastructure | 14-20 months | 00-01, 13-14, 19-20 | [View Guide →](resources/career_roadmap_guide.md#data-engineer) |
 | **MLOps Engineer** | ML Operations | 16-24 months | 00-01, 05, 09-10, 12, 25, 13-14, 19 | [View Guide →](resources/career_roadmap_guide.md#mlops-engineer) |
-| **Research Scientist** | Research & Innovation | 24-34 months | 00-12, 15, 19, 21, 22-24, 25 | [View Guide →](resources/career_roadmap_guide.md#research-scientist) |
+| **Research Scientist** | Novel methods, careful experiments, clear write-ups | 24-34 months | 00-12, 15, 19, 21, 22-24, 25 | [View Guide →](resources/career_roadmap_guide.md#research-scientist) |
 | **BI Analyst** | Business Intelligence | 10-15 months | 00-01, 19-21 | [View Guide →](resources/career_roadmap_guide.md#business-intelligence-analyst) |
 
 **Each role-specific guide includes:**
@@ -92,6 +92,10 @@ This repository provides a structured learning path for machine learning, organi
 
 **Time Estimates**: Realistic completion time is **15-22 months (full-time, 30-40 hrs/week)** or **30-39 months (part-time, 10-15 hrs/week)** for comprehensive coverage including all 26 modules and 23 projects. See [FAQ section](#common-questions-learning-guide) for detailed breakdown.
 
+### How this repo lines up with typical DS/ML curricula
+
+Structured courses (university terms, bootcamps, or long-form playlists) usually stack **Python → math/stats → tabular ML → evaluation & feature work → deep learning & GenAI → SQL & storytelling → production/MLOps → electives**. This repository follows the same *logic*, but groups topics by **module** instead of week numbers: Phase **0** is programming plus calculus/linear algebra/stats; Phase **1** is the NumPy–Pandas–viz–EDA–API–SQL-access stack; Phases **2–4** are classical supervised and unsupervised ML; Phases **5–7** are neural nets, specialized DL, and LLM-era tooling; **7.5** and **13–14** cover SQL, fairness of metrics, explainability, deployment, and experiment/version discipline; **15** and **22–24** are branches (time series, RL, graphs, audio). If your external syllabus mentions something specific—**MLE and odds** for logistic models, **ROC vs PR**, **data leakage**, **Airflow/Kubernetes monitoring**, **Kaggle-style iteration**—look first in **04**, **05**, **06–07**, **14**, and the **project** folders; gaps are fair game for [contributions](#contributing).
+
 ## Learning Path Overview
 
 | Phase | Modules | Focus Area | Est. Time (Full-Time) | Est. Time (Part-Time) |
@@ -102,7 +106,8 @@ This repository provides a structured learning path for machine learning, organi
 | **Phase 3** | 06-07 | Advanced ML | 1-2 months | 2-4 months |
 | **Phase 4** | 08 | Unsupervised Learning | 1 month | 2 months |
 | **Phase 5** | 09-10 | Deep Learning Fundamentals | 2 months | 4 months |
-| **Phase 6** | 11-12, 15 | Specialized Deep Learning | 3-4 months | 6-8 months |
+| **Phase 6** | 11-12 | Vision & language (specialized DL) | 3-4 months | 6-8 months |
+| **Branch** | 15 | Time series (parallel to or after Phase 5–6) | 0.5-1 month | 1-2 months |
 | **Phase 7** | 25 | Generative AI & Modern LLMs | 1-2 months | 2-4 months |
 | **Phase 7.5** | 19-21 | Essential Skills (SQL, Imbalanced Data, Explainability) | 1-2 months | 2-4 months |
 | **Phase 8** | 13-14 | Production & MLOps | 2-3 months | 4-6 months |
@@ -115,27 +120,27 @@ This repository provides a structured learning path for machine learning, organi
 
 - **00-prerequisites**
   - **AI programming with Python**
-  - Variables, conditional statements, loops, lists, and dictionaries
-  - Functions and functional programming
-  - Introduction to OOP: classes and objects; class and object theory; class and object implementation
+  - Variables, operators, control flow, strings (indexing/slicing), lists, tuples, sets, and dictionaries; `import` and modules; `break` / `continue` / `pass`
+  - Functions and functional programming; `*args` / `**kwargs`; nested functions and scope
+  - Introduction to OOP: classes and objects; methods; magic methods; inheritance, polymorphism, encapsulation, abstraction
   - Iterators and generators; lambda functions; `map`, `filter`, and `reduce`
-  - File handling: reading and writing files; read position (`tell`, `seek`)
-  - Inheritance and polymorphism; encapsulation and abstraction
+  - File handling: text and binary I/O; read position (`tell`, `seek`); context managers (`with`); JSON and pickle (when each is appropriate)
+  - Decorators; namespaces and the LEGB scope rule
   - Practice problems based on file handling
-  - Exceptions: `try` / `except` / `else` / `finally`
+  - Exceptions: `try` / `except` / `else` / `finally`; specific errors, `raise`, and custom exception types
   - **Project:** Movie script generator
   - Time Complexity & Algorithm Efficiency (Big O notation)
   - GUI Development with tkinter
   - Essential Mathematics (Linear Algebra including Tensors, Statistics, Calculus basics)
   - Computational Math: Python code examples alongside theory for better intuition
-  - Environment Setup (Python, Jupyter, Virtual Environments)
+  - Environment Setup (Python, Jupyter, Virtual Environments, Git & GitHub basics)
 
 ### Phase 1: Data Fundamentals
 **Goal**: Master data manipulation and visualization
 
 - **01-python-for-data-science** — **Data processing & visualization (ML toolbox)**
   - **NumPy:** fundamentals, `ndarray`, attributes and dtypes; array creation (existing data, from scratch, ranges, random); indexing, slicing, copies, and advanced iteration; reshaping and transformations; broadcasting; sorting, searching, and counting; arithmetic, mathematical, and logical operations; statistical analysis and linear algebra basics
-  - **Pandas:** Series and DataFrame; CSV/Excel and file handling; `loc` / `iloc`, indexing, and filtering; modifying data (add/drop rows and columns, assign values); duplicates, missing data, and datetime operations; apply functions, aggregation, and `GroupBy`
+  - **Pandas:** Series and DataFrame; CSV/Excel and file handling; `loc` / `iloc`, indexing, and filtering; modifying data (add/drop rows and columns, assign values); duplicates, missing data, and datetime operations; apply functions, aggregation, and `GroupBy`; merge/join/concat; MultiIndex; stack/unstack, `melt`, pivot tables; vectorized string operations
   - Polars: High-performance data manipulation (10-100x faster than Pandas for large datasets)
   - Dask: Parallel Pandas for larger-than-memory datasets
   - **Matplotlib:** line, scatter, histogram, bar, and pie plots; Matplotlib & Seaborn for broader visualization
@@ -151,32 +156,34 @@ This repository provides a structured learning path for machine learning, organi
 ### Phase 2: Machine Learning Basics
 **Goal**: Understand core ML concepts and algorithms
 
+**Machine learning for beginners** (maps with runnable examples: [Introduction](02-introduction-to-ml/introduction-to-ml.md#ml-for-beginners-curriculum-map-this-guide) → [Regression](03-supervised-learning-regression/regression.md#ml-for-beginners-curriculum-map-this-guide) → [Classification](04-supervised-learning-classification/classification.md#ml-for-beginners-curriculum-map-this-guide); EDA and preprocessing in [EDA](01-python-for-data-science/04-exploratory-data-analysis.md#ml-for-beginners-curriculum-map-this-guide) and [Feature engineering](07-feature-engineering/feature-engineering.md#ml-for-beginners-curriculum-map-this-guide); practice in [Beginner projects](16-projects-beginner/README.md#ml-for-beginners-curriculum-map-projects))
+
 - **02-introduction-to-ml**
-  - What is Machine Learning?
-  - Types of ML (Supervised, Unsupervised, Reinforcement)
-  - ML Workflow and Best Practices
+  - **Machine learning for beginners** framing; data types in ML; **population vs sample**
+  - **Descriptive statistics fundamentals**: mean, median, mode, variance, standard deviation (with code)
+  - What is Machine Learning? Types (Supervised, Unsupervised, Reinforcement); ML workflow and best practices; vocabulary for **batch vs online** updates and **instance-based vs model-based** learners (see guide)
+  - **Projects:** first end-to-end model ([first ML project](02-introduction-to-ml/first-ml-project-tutorial.md))
 
 - **03-supervised-learning-regression**
-  - Linear Regression
-  - Polynomial Regression
-  - Regularization (Ridge, Lasso)
-  - Evaluation Metrics (MSE, RMSE, MAE, R²)
-  - Statistical Regression Analysis (statsmodels: TSS, RSS, ESS, F-statistic, p-values, confidence intervals)
+  - **Linear regression** (simple and multiple) and **evaluation metrics** (MSE, RMSE, MAE, R²)
+  - **Polynomial and multiple regression** techniques; regularization (Ridge, Lasso)
+  - **Optimization lens**: gradient descent intuition and **batch vs stochastic vs mini-batch** updates (ties to Phase 0 calculus and Phase 5 deep learning)
+  - **Data distribution analysis**: percentiles, histogram, boxplot (see guide)
+  - **Feature relationships**: scatter plots, covariance, correlation (with regression workflow)
+  - **End-to-end regression project** path and **saving a model** (train → evaluate → persist); full walkthrough: [regression project tutorial](03-supervised-learning-regression/regression-project-tutorial.md); deployment: [model deployment module](13-model-deployment/README.md)
+  - Statistical regression analysis (statsmodels: TSS, RSS, ESS, F-statistic, p-values, confidence intervals)
 
 - **04-supervised-learning-classification**
-  - Logistic Regression
-  - Decision Trees
-  - Random Forests
-  - Support Vector Machines (SVM)
-  - K-Nearest Neighbors (KNN)
-  - Naive Bayes (Gaussian, Multinomial, Bernoulli)
-  - Multi-Class Classification Strategies (One-vs-Rest, One-vs-One)
-  - Evaluation Metrics (Accuracy, Precision, Recall, F1, ROC-AUC)
-  - Bias Auditing and Fairness (Fairlearn, demographic parity, equalized odds)
+  - **Logistic regression** (including multiclass / softmax framing), **maximum likelihood** view of loss, and **K-Nearest Neighbours** (distance-based learning); **Naive Bayes** (probabilistic classification)
+  - Decision Trees, Random Forests, SVM (multiclass strategies; Accuracy, Precision, Recall, F1, ROC-AUC); **advanced track** in same guide: entropy / information gain / rules, SVM margin–hyperplane–kernels, tree depth vs overfitting, tree vs forest, supervised model comparison ([map](04-supervised-learning-classification/classification.md#advanced-machine-learning-curriculum-map-this-guide))
+  - **Exploratory data analysis and data cleaning** (tie-in with Phase 1 EDA); **feature relationship analysis** (scatter, covariance, correlation)
+  - Bias auditing and fairness (Fairlearn, demographic parity, equalized odds)
 
 - **05-model-evaluation-optimization**
   - Train/Validation/Test Split
   - Cross-Validation (K-Fold, Stratified, Leave-One-Out, Time Series Split)
+  - **ROC and PR curves**, thresholds, and when PR beats ROC on imbalanced problems
+  - **Data leakage**: how it creeps in and how to design splits that prevent it
   - Hyperparameter Tuning (Grid Search, Random Search, Bayesian Optimization with Optuna)
   - Bias-Variance Tradeoff
   - Learning Curves
@@ -186,11 +193,11 @@ This repository provides a structured learning path for machine learning, organi
 ### Phase 3: Advanced Supervised Learning
 **Goal**: Explore ensemble methods and advanced techniques
 
+**Advanced machine learning** (trees, SVM theory, supervised comparison: [Classification guide](04-supervised-learning-classification/classification.md#advanced-machine-learning-curriculum-map-this-guide); ensembles: [Ensemble methods](06-ensemble-methods/ensemble-methods.md#advanced-machine-learning-curriculum-map-this-guide); clustering: [Unsupervised](08-unsupervised-learning/unsupervised-learning.md#advanced-machine-learning-curriculum-map-this-guide))
+
 - **06-ensemble-methods**
-  - Bagging (Bootstrap Aggregating)
-  - Boosting (AdaBoost with detailed components, Gradient Boosting, XGBoost with advanced topics, LightGBM with GOSS & EFB, CatBoost)
-  - Stacking (detailed steps and best practices)
-  - Voting Classifiers
+  - **Random Forest** and bagging; boosting (AdaBoost, Gradient Boosting, XGBoost, LightGBM, CatBoost); stacking; voting
+  - Map: [Advanced ML curriculum](06-ensemble-methods/ensemble-methods.md#advanced-machine-learning-curriculum-map-this-guide)
 
 - **07-feature-engineering**
   - Feature Selection
@@ -203,131 +210,46 @@ This repository provides a structured learning path for machine learning, organi
   - Comprehensive sklearn Pipeline and ColumnTransformer Guide
 
 ### Phase 4: Unsupervised Learning
-**Goal**: Learn to work with unlabeled data
+**Goal**: Make sense of data when nobody handed you labels.
 
-- **08-unsupervised-learning**
-  - Clustering (K-Means, Hierarchical, DBSCAN)
-  - Dimensionality Reduction (PCA, t-SNE, SVD)
-  - SVD (Singular Value Decomposition) and its connection to PCA
-  - Anomaly Detection
-  - Association Rules
+Module **08** is where you stop pretending every dataset comes with a target column. You cluster, reduce dimensions, spot weird points, and learn to argue *why* a grouping is plausible—skills you will reuse in EDA, modeling, and paper-style analysis. Follow the unsupervised walkthrough when you want structure beyond “try k=3”: [unsupervised learning map](08-unsupervised-learning/unsupervised-learning.md#advanced-machine-learning-curriculum-map-this-guide).
+
+- **08-unsupervised-learning** — K-Means, hierarchical and density-based clustering, validation and plots, PCA / t-SNE / SVD, **LDA (supervised dimensionality reduction)** beside PCA, anomaly detection, **association rules (e.g. Apriori / market-basket style)**.
 
 ### Phase 5: Deep Learning Fundamentals
-**Goal**: Introduction to neural networks and deep learning
+**Goal**: Build intuition that survives new architectures.
 
-- **09-neural-networks-basics**
-  - Perceptron
-  - Multi-Layer Perceptron (MLP)
-  - Activation Functions
-  - Backpropagation
-  - Gradient Descent Variants
+Most breakthroughs are still “layers + nonlinearity + data + optimization.” Here you learn to **read training curves**, **sanity-check gradients**, and know *why* a linear model fails—before frameworks hide the details. If you are aiming toward a **research-scientist** style path, treat this phase as your lab notebook habits: small experiments, controlled changes, reproducible runs.
 
-- **10-deep-learning-frameworks**
-  - TensorFlow/Keras Basics
-  - PyTorch Basics
-  - Building and Training Neural Networks
-  - Model Saving and Loading
-  - Model Optimization (Quantization, TensorRT, ONNX, GGML/GGUF for edge deployment)
+- **09-neural-networks-basics** — From linear limits to MLPs: activations, losses, backpropagation as chain rule, optimizers (SGD family through Adam), regularization, initialization, and what actually breaks training. [Study map →](09-neural-networks-basics/neural-networks.md#deep-learning-curriculum-map-this-guide)
+
+- **10-deep-learning-frameworks** — Turn math into working code: PyTorch tensors and autograd, real training loops, Keras ergonomics, saving models, and shipping-friendly formats when you need them. [Study map →](10-deep-learning-frameworks/deep-learning-frameworks.md#deep-learning-curriculum-map-this-guide) · [Practice builds →](17-projects-intermediate/README.md#deep-learning-curriculum-map-projects) (MNIST, churn, tabular regression)
 
 ### Phase 6: Specialized Deep Learning
-**Goal**: Master domain-specific deep learning applications
+**Goal**: See the world as tensors—pixels and tokens.
 
-- **11-computer-vision**
-  - Introduction to Computer Vision and Visual Cortex
-  - Images and Pixels (RGB, Grayscale, Color Models)
-  - Convolution and Edge Detection (Sobel, Canny, Prewitt)
-  - Padding, Strides, and Spatial Arrangement
-  - Convolutional Neural Networks (CNNs)
-  - Pooling Mechanisms (Max, Average)
-  - CNN Training Optimization (Batch Normalization, Dropout, Callbacks)
-  - CNN Architectures: LeNet, AlexNet, VGGNet, ResNet
-  - ImageNet and Large-Scale Recognition
-  - Transfer Learning
-  - Data Augmentation
-  - Object Detection (R-CNN to YOLO)
-  - Semantic and Instance Segmentation
-  - GANs for Image Generation
-  - Diffusion Models and Stable Diffusion (with Hugging Face integration)
-  - Variational Autoencoders (VAEs)
-  - Recent Breakthroughs (Vision Transformers, CLIP)
+This is where **vision** and **language** split into specialist toolkits, but the mindset stays the same: inductive biases (convolution for locality, attention for pairing), careful data pipelines, and honest evaluation. Research-minded learners should linger here: compare baselines, ablate one change at a time, and write down *what surprised you*.
 
-- **12-natural-language-processing**
-  - Text Preprocessing
-  - Word Embeddings (Word2Vec, GloVe)
-  - Recurrent Neural Networks (RNNs)
-  - Long Short-Term Memory (LSTM)
-  - Transformers Basics
-  - Fine-tuning Transformers (T5, BERT, GPT with Hugging Face)
-  - RAG (Retrieval Augmented Generation)
-  - Sentiment Analysis
+**Where to dive:** [Vision roadmap](11-computer-vision/computer-vision.md#cnn-and-modern-vision-curriculum-map-this-guide) · [Language & sequence roadmap](12-natural-language-processing/nlp.md#cnn-and-rnn-curriculum-map-this-guide) · [PyTorch bridge for CV + NLP](10-deep-learning-frameworks/deep-learning-frameworks.md#cnn-and-rnn-curriculum-map-pytorch) · [Open-ended projects](18-projects-advanced/README.md#cnn-and-rnn-curriculum-map-projects)
+
+- **11-computer-vision** — How images become features: convolutions, geometry (padding/stride), modern CNN families, training tricks, augmentation, transfer learning from strong backbones, detection and segmentation, generative models, and how ViT-style ideas connect to the rest of ML.
+
+- **12-natural-language-processing** — Sequences first (RNN → LSTM/GRU → bidirectional stacks), then the attention era: self-attention, encoders/decoders, inference, and practical Hugging Face workflows—plus retrieval and sentiment tasks that mirror messy real text.
 
 ### Phase 7: Generative AI & Modern LLM Applications
-**Goal**: Master modern LLM applications and GenAI engineering
+**Goal**: Work *with* foundation models, not against them.
 
-**Why This Phase:**
-The industry has rapidly shifted from training models from scratch to using pre-trained foundational models (LLMs). This phase bridges traditional NLP with modern LLM application development and is now fundamental enough to come before Production/Deployment.
+You rarely train a frontier LLM from scratch; you **compose**—prompts, retrieval, tools, evaluation harnesses, and guardrails. This phase is about shipping ideas quickly *without* abandoning rigor: trace failures, measure hallucinations, version prompts like code, and know when a vector DB is the right memory and when it is theater.
 
-**Key Topics Covered:**
-- **Prompt Engineering**: Comprehensive techniques for effective LLM interaction (zero-shot, few-shot, chain-of-thought)
-- **Vector Databases**: Pinecone, ChromaDB, Weaviate, FAISS for semantic search and similarity matching
-- **RAG (Retrieval-Augmented Generation)**: End-to-end implementation for knowledge-augmented LLMs
-- **LLM Agents**: LangChain, LangGraph, AutoGPT for building autonomous AI agents
-- **Multi-Agent Systems**: Coordinated workflows with multiple specialized agents
-- **Building Production GenAI Apps**: Real-world deployment patterns and best practices
+- **25-generative-ai-llms** — Prompt patterns, embeddings and vector search, RAG pipelines, agents and orchestration, and patterns that survive contact with production. Deeper reads: [GenAI overview](resources/generative_ai_comprehensive_guide.md), [RAG guide](resources/rag_comprehensive_guide.md), [LangChain](resources/langchain_guide.md), [Agents](resources/ai_agents_guide.md).
 
-**Module:**
-- **25-generative-ai-llms**: Complete guide with practical examples, code notebooks, and hands-on projects
+**Pacing:** Roughly 1–2 months full-time (2–4 part-time), often best **after** Phase 6 or **alongside** NLP if you learn by building products early.
 
-**Learning Resources:**
-- [Generative AI Comprehensive Guide](resources/generative_ai_comprehensive_guide.md) - Complete overview
-- [RAG Comprehensive Guide](resources/rag_comprehensive_guide.md) - RAG implementation details
-- [LangChain Guide](resources/langchain_guide.md) - LangChain framework
-- [AI Agents Guide](resources/ai_agents_guide.md) - AI agents and multi-agent systems
+### Module 15: Time series (when your world has a clock)
 
-**When to Learn:**
-- After Phase 6 (Specialized Deep Learning) - recommended
-- In parallel with Module 12 (NLP) - if you want to learn modern approaches early
-- Before Phase 8 (Production) - helps with GenAI deployment
+Forecasting and monitoring problems break the usual “shuffle and split” story. Treat **15** as a side quest you can start after you are comfortable with regression *or* after RNNs—many research and product teams touch time series even if it is not their main title.
 
-**Time Estimate:** 1-2 months (full-time) or 2-4 months (part-time)
-
-- **15-time-series-analysis**
-  - Time Series Fundamentals (Trend, Seasonality, Stationarity)
-  - Statistical Methods (ARIMA, SARIMA, Exponential Smoothing)
-  - Deep Learning for Time Series (LSTM, GRU, Transformers)
-  - Feature Engineering for Time Series
-  - Evaluation and Validation
-  - **Note**: Module 15 is placed here logically but numbered after modules 13-14. It can be learned in parallel with modules 11-12 or after Phase 5.
-
-### Phase 10: Advanced Specialized Topics
-**Goal**: Master advanced specialized ML domains
-
-**Note**: These modules cover advanced topics that build on deep learning fundamentals. Learn these after completing Phase 5 (Deep Learning Fundamentals) and Phase 6 (Specialized Deep Learning).
-
-- **22-reinforcement-learning**
-  - Markov Decision Processes (MDPs)
-  - Value-Based Methods (Q-Learning, DQN)
-  - Policy-Based Methods (REINFORCE, Policy Gradients)
-  - Actor-Critic Methods
-  - Deep Reinforcement Learning
-  - Multi-Agent RL, Hierarchical RL, Imitation Learning
-  - Applications: Game Playing, Robotics, Recommendation Systems
-
-- **23-graph-neural-networks**
-  - Graph Fundamentals and Representations
-  - Message Passing in GNNs
-  - Graph Convolutional Networks (GCNs)
-  - Graph Attention Networks (GATs)
-  - GraphSAGE and Other Architectures
-  - Applications: Social Networks, Recommendation Systems, Molecular Analysis
-
-- **24-audio-speech-processing**
-  - Audio Signal Fundamentals (Waveforms, Spectrograms, MFCCs)
-  - Speech Recognition (ASR) - CTC, Attention-based, Whisper
-  - Text-to-Speech (TTS) - Neural TTS, Voice Cloning
-  - Audio Classification (Music, Events, Emotions)
-  - Music Generation
-  - Voice Processing (VAD, Speaker ID, Enhancement)
+- **15-time-series-analysis** — Trend and seasonality, classical models (ARIMA family), deep sequence models, feature design for temporal data, and evaluation that respects time ordering. *Numbering note:* module 15 sits after 13–14 in the repo but fits logically here or alongside Phases 5–6.
 
 ### Phase 7.5: Essential Data Science Skills
 **Goal**: Master critical skills for real-world ML applications
@@ -385,11 +307,11 @@ The industry has rapidly shifted from training models from scratch to using pre-
 
 - **14-mlops-basics**
   - Version Control for ML (DVC, MLflow)
-  - CI/CD for ML
+  - CI/CD for ML (e.g. GitHub Actions) and reproducible project templates (Cookiecutter)
   - Experiment Tracking (MLflow, Weights & Biases with advanced features)
   - Model Registry
   - Weights & Biases: Hyperparameter sweeps, model artifacts, team collaboration
-  - Cookiecutter for Data Science
+  - **Orchestration & scale (topics and links in module guides):** DAG-style pipelines (e.g. Airflow, Kubeflow), containers and Kubernetes basics, rollout patterns (canary / blue–green), metrics and alerting (e.g. Prometheus / Grafana) where you operationalize models
   - Apache Kafka for Data Streaming
   - Apache Spark for Big Data Processing
 
@@ -433,7 +355,7 @@ The industry has rapidly shifted from training models from scratch to using pre-
 | 7 | Feature Engineering Mastery | Feature Engineering, Advanced Techniques | 4-5 days | ✓ Available |
 | 8 | Ensemble Methods Comparison | Ensemble Methods, Model Comparison | 3-4 days | ✓ Available |
 
-**Prerequisites**: Complete Phases 0-4 and some Phase 6.5 topics recommended
+**Prerequisites**: Complete Phases 0-4 and some Phase 7.5 topics recommended
 
 #### Advanced Projects (9 projects)
 
@@ -453,6 +375,36 @@ The industry has rapidly shifted from training models from scratch to using pre-
 - [Capstone Blueprints →](18-projects-advanced/capstones/README.md) (ML Engineer, LLM/RAG, Data/Analytics)
 
 **Prerequisites**: Complete Phases 0-7 recommended for full benefit
+
+### Phase 10: Advanced Specialized Topics
+**Goal**: Push into domains where structure is not a tidy table of rows.
+
+**Note**: Reinforcement learning, graphs, and audio each need solid deep-learning fundamentals. Treat **22–24** as electives you pick when a problem pulls you there—after Phase 5–6 (and often after you have shipped at least one non-trivial model).
+
+- **22-reinforcement-learning**
+  - Markov Decision Processes (MDPs)
+  - Value-Based Methods (Q-Learning, DQN)
+  - Policy-Based Methods (REINFORCE, Policy Gradients)
+  - Actor-Critic Methods
+  - Deep Reinforcement Learning
+  - Multi-Agent RL, Hierarchical RL, Imitation Learning
+  - Applications: Game Playing, Robotics, Recommendation Systems
+
+- **23-graph-neural-networks**
+  - Graph Fundamentals and Representations
+  - Message Passing in GNNs
+  - Graph Convolutional Networks (GCNs)
+  - Graph Attention Networks (GATs)
+  - GraphSAGE and Other Architectures
+  - Applications: Social Networks, Recommendation Systems, Molecular Analysis
+
+- **24-audio-speech-processing**
+  - Audio Signal Fundamentals (Waveforms, Spectrograms, MFCCs)
+  - Speech Recognition (ASR) - CTC, Attention-based, Whisper
+  - Text-to-Speech (TTS) - Neural TTS, Voice Cloning
+  - Audio Classification (Music, Events, Emotions)
+  - Music Generation
+  - Voice Processing (VAD, Speaker ID, Enhancement)
 
 ## Prerequisites
 
@@ -525,7 +477,7 @@ jupyter notebook
 **Note:** All learning modules now include comprehensive detailed guides with code examples, exercises, and solutions. Beginner projects are fully available with READMEs and code. Intermediate and advanced projects have detailed READMEs with instructions.
 
 ```
-road-to-ml/
+road-to-machine-learning/
 
  00-prerequisites/
     01-python-basics.md (includes time complexity, iterators/generators)
@@ -533,6 +485,9 @@ road-to-ml/
     03-statistics-probability.md
     04-calculus.md
     05-environment-setup.md
+    prerequisites-advanced-topics.md
+    prerequisites-project-tutorial.md
+    prerequisites-quick-reference.md
     README.md
 
  01-python-for-data-science/
@@ -547,10 +502,15 @@ road-to-ml/
     09-streamlit-dashboards.md
     10-flask-web-development.md
     11-tableau-visualization.md
+    python-for-data-science-advanced-topics.md
+    python-for-data-science-project-tutorial.md
+    python-for-data-science-quick-reference.md
     README.md
 
  02-introduction-to-ml/
     introduction-to-ml.md
+    introduction-to-ml-advanced-topics.md
+    introduction-to-ml-quick-reference.md
     ml-terminology.md
     problem-identification-algorithm-selection.md
     first-ml-project-tutorial.md
@@ -643,9 +603,72 @@ road-to-ml/
 
  15-time-series-analysis/
     time-series-analysis.md
-    time-series-analysis-advanced-topics.md
+    time-series-advanced-topics.md
     time-series-project-tutorial.md
     time-series-quick-reference.md
+    resources.md
+    exercises/README.md
+    README.md
+
+ 16-projects-beginner/
+    projects-beginner.md
+    projects-beginner-advanced-topics.md
+    projects-beginner-project-tutorial.md
+    projects-beginner-quick-reference.md
+    project-01-house-price-prediction/
+    project-02-iris-classification/
+    project-03-titanic-survival/
+    project-04-spam-detection/
+    project-05-wine-quality/
+    project-06-customer-dashboard/
+    (each: code + README)
+    README.md
+
+ 17-projects-intermediate/
+    project-01-mnist-digit-recognition/
+    project-02-customer-churn/
+    project-03-movie-recommendation/
+    project-04-fraud-detection/
+    project-05-customer-segmentation/
+    project-06-time-series-forecasting/
+    project-07-feature-engineering/
+    project-08-ensemble-comparison/
+    (each: README + instructions)
+    README.md
+
+ 18-projects-advanced/
+    capstones/ (README + capstone-ml-engineer.md, capstone-llm-rag-engineer.md, capstone-data-analytics-sql-ml.md)
+    project-01-cifar10-classification/
+    project-02-sentiment-analysis/
+    project-03-time-series-forecasting/
+    project-04-chatbot/
+    project-05-object-detection/
+    project-06-end-to-end-pipeline/
+    project-07-generative-model/
+    project-08-model-explainability/
+    project-09-model-deployment/
+    (each: README + instructions)
+    README.md
+
+ 19-sql-database-fundamentals/
+    sql-database.md
+    sql-database-advanced-topics.md (includes NoSQL: MongoDB, Redis, Cassandra, Neo4j)
+    sql-database-project-tutorial.md
+    sql-database-quick-reference.md
+    README.md
+
+ 20-handling-imbalanced-data/
+    imbalanced-data.md
+    imbalanced-data-advanced-topics.md
+    imbalanced-data-project-tutorial.md
+    imbalanced-data-quick-reference.md
+    README.md
+
+ 21-model-explainability/
+    model-explainability.md
+    model-explainability-advanced-topics.md
+    model-explainability-project-tutorial.md
+    model-explainability-quick-reference.md
     README.md
 
  22-reinforcement-learning/
@@ -676,82 +699,62 @@ road-to-ml/
     generative-ai-llms-quick-reference.md
     README.md
 
- 16-projects-beginner/
-    [6 project directories with code and READMEs]
-    README.md
-
- 17-projects-intermediate/
-    [8 project directories with READMEs]
-    README.md
-
- 18-projects-advanced/
-    [9 project directories with READMEs]
-    README.md
-
- 19-sql-database-fundamentals/
-    sql-database.md
-    sql-database-advanced-topics.md (includes NoSQL: MongoDB, Redis, Cassandra, Neo4j)
-    sql-database-project-tutorial.md
-    sql-database-quick-reference.md
-    README.md
-
- 20-handling-imbalanced-data/
-    imbalanced-data.md
-    imbalanced-data-advanced-topics.md
-    imbalanced-data-project-tutorial.md
-    imbalanced-data-quick-reference.md
-    README.md
-
- 21-model-explainability/
-    model-explainability.md
-    model-explainability-advanced-topics.md
-    model-explainability-project-tutorial.md
-    model-explainability-quick-reference.md
+ tools/
+    check_links.py
     README.md
 
  resources/
-    data_science_cheatsheet.md
-    prerequisites_cheatsheet.md
-    introduction_to_ml_cheatsheet.md
-    mlops_cheatsheet.md
-    model_deployment_cheatsheet.md
-    imbalanced_data_cheatsheet.md
-    model_explainability_cheatsheet.md
-    git_guide.md
-    math_formulas.md
-    common_errors.md
-    ethics_in_ml.md
-    model_interpretability.md
-    ml_glossary.md
-    reinforcement_learning.md
-    recommender_systems.md
-    career_roadmap_guide.md
-    career_portfolio.md
-    interview_prep.md
-    open_source_contribution.md
-    kaggle_competitions.md
-    docker_tutorial.md
-    ml_model_testing.md
-    stakeholder_communication.md
+    agile_data_science.md
+    ai_agents_guide.md
     automl_basics.md
+    blogs_websites.md
+    books.md
+    causal_inference_guide.md
+    career_portfolio.md
+    career_roadmap_guide.md
+    common_errors.md
+    courses.md
+    data_products_guide.md
+    data_science_cheatsheet.md
     data_validation.md
-    web_scraping_guide.md
-    powerbi_guide.md
+    datasets.md
+    docker_tutorial.md
+    dsa_course_python.md
+    dsa_for_ml_guide.md
+    enterprise_data_tools.md
+    ethics_in_ml.md
     excel_data_analysis_guide.md
-    mlflow_comprehensive_guide.md
-    transformer_fine_tuning_guide.md
+    genai_production_deployment.md
+    generative_ai_comprehensive_guide.md
+    git_guide.md
+    imbalanced_data_cheatsheet.md
+    interview_prep.md
+    introduction_to_ml_cheatsheet.md
+    java_for_data_science.md
+    kaggle_competitions.md
     langchain_guide.md
     llamaindex_guide.md
-    ai_agents_guide.md
-    dsa_for_ml_guide.md
-    causal_inference_guide.md
-    books.md
-    courses.md
-    datasets.md
-    tools.md
-    youtube_channels.md
-    blogs_websites.md
+    math_formulas.md
+    ml_glossary.md
+    ml_model_testing.md
+    ml_system_design_guide.md
+    mlflow_comprehensive_guide.md
+    mlops_cheatsheet.md
+    model_deployment_cheatsheet.md
+    model_explainability_cheatsheet.md
+    model_interpretability.md
+    open_source_contribution.md
+    powerbi_guide.md
     practice_platforms.md
+    prerequisites_cheatsheet.md
+    rag_comprehensive_guide.md
+    recommender_systems.md
+    reinforcement_learning.md
+    stakeholder_communication.md
+    tools.md
+    transformer_fine_tuning_guide.md
+    web_scraping_guide.md
+    youtube_channels.md
 
  requirements.txt
  LICENSE
@@ -762,6 +765,8 @@ road-to-ml/
  LEARNING_ROADMAP.md
  QUICK_START.md
 ```
+
+**Note:** Module folders are numbered **00–25** on disk (same as the learning-path *phases*, which reorder topics for teaching). The tree above follows **numeric folder order**.
 
 ## Resources
 

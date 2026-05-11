@@ -36,6 +36,14 @@ If you find a bug, have a suggestion, or want to request a feature:
 6. **Push** to your branch (`git push origin feature/amazing-feature`)
 7. **Open a Pull Request**
 
+### Git hooks (optional, one command per clone)
+
+This repository ships a `commit-msg` hook that strips automatic `Co-authored-by:` lines from commit messages (so pushes stay free of tool-injected trailers). After cloning, enable hooks from the repo root:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ### Contributing Content
 
 We welcome contributions of:
