@@ -18,6 +18,15 @@ Master Convolutional Neural Networks (CNNs) for image processing.
 - Recent Breakthroughs (Vision Transformers, CLIP)
 - Real-world Computer Vision Projects
 
+## CNN and RNN curriculum map (CNN track)
+
+| Topic | Where to study |
+|-------|----------------|
+| CNN foundation, architectures, math | [Computer vision guide](computer-vision.md#cnn-and-modern-vision-curriculum-map-this-guide) |
+| Activations (Sigmoid, tanh, ReLU, Leaky ReLU, ELU, SELU) | [Activation functions](computer-vision.md#activation-functions-for-cnns) |
+| CNN in PyTorch; augmentation; pretrained models | [Frameworks PyTorch CV](../10-deep-learning-frameworks/deep-learning-frameworks.md#pytorch-computer-vision), [Augmentation](computer-vision.md#data-augmentation), [Transfer learning](computer-vision.md#transfer-learning) |
+| RNN / Transformer NLP | [NLP module](../12-natural-language-processing/nlp.md#cnn-and-rnn-curriculum-map-this-guide) |
+
 ##  Topics Covered
 
 ### 1. Fundamentals

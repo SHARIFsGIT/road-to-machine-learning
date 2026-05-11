@@ -11,6 +11,24 @@ Before starting these projects, you should have completed:
 - Phase 7: Feature Engineering
 - Phase 8: Unsupervised Learning (for some projects)
 
+## Advanced machine learning curriculum map (projects)
+
+Suggested builds aligned with **trees, SVM, clustering, fraud, and URL classification** (see module maps in `04`, `06`, `08`).
+
+| Project | Focus | Dataset / start |
+|---------|--------|-----------------|
+| **Student performance indicator** | Regression or classification on grades; EDA, feature encoding | [Students performance in exams (Kaggle)](https://www.kaggle.com/datasets/spscientist/students-performance-in-exams) |
+| **Credit card fraud detection** | Imbalanced classification, anomaly-style metrics | [Project 4 write-up](project-04-fraud-detection/README.md), [Kaggle Credit Card Fraud](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) |
+| **Phishing classifier** | URL / text features, Naive Bayes or linear models | [Phishing URL (example collection)](https://www.kaggle.com/datasets/shirani112/phishing-url-dataset) — mirror the spam pipeline in [spam detection](../16-projects-beginner/project-04-spam-detection/README.md) |
+
+## Deep learning curriculum map (projects)
+
+| Project | Skills | Link |
+|---------|--------|------|
+| **Handwritten digit recognition (MNIST)** | MLP/CNN, training loop, metrics | [Project 1](project-01-mnist-digit-recognition/README.md) |
+| **Customer churn prediction** | Tabular ANN or gradient boosting, business metrics | [Project 2](project-02-customer-churn/README.md) |
+| **House price prediction** (ANN extension) | Regression with dense nets or baselines + compare | [Beginner house prices](../16-projects-beginner/project-01-house-price-prediction/README.md) |
+
 ##  Projects
 
 ### Project 1: Handwritten Digit Recognition (MNIST)

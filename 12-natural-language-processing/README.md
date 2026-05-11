@@ -12,6 +12,15 @@ Learn to process and understand human language with machine learning.
 - Sentiment Analysis
 - Text Classification
 
+## CNN and RNN curriculum map (RNN & Transformer track)
+
+| Topic | Where to study |
+|-------|----------------|
+| RNN, LSTM, GRU, bidirectional, tuning | [NLP guide](nlp.md#cnn-and-rnn-curriculum-map-this-guide) |
+| PyTorch sequence batches | [Sequence data and PyTorch](nlp.md#sequence-data-and-pytorch) |
+| Self-attention, encoder/decoder, inference | [Transformers](nlp.md#transformers) |
+| CNNs (images) | [Computer vision](../11-computer-vision/computer-vision.md#cnn-and-modern-vision-curriculum-map-this-guide) |
+
 ##  Topics Covered
 
 ### 1. Text Preprocessing

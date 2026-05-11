@@ -2,9 +2,22 @@
 
 Comprehensive guide to Convolutional Neural Networks (CNNs) and image processing.
 
+## CNN and modern vision curriculum map (this guide)
+
+**CNN track** (RNN/Transformer for **text** → [NLP guide](../12-natural-language-processing/nlp.md#cnn-and-rnn-curriculum-map-this-guide); **PyTorch CNN patterns** → [Deep learning frameworks](../10-deep-learning-frameworks/deep-learning-frameworks.md#cnn-and-rnn-curriculum-map-pytorch)).
+
+- **CNN foundation** (conv, pool, channels) → [Convolution and edge detection](#convolution-and-edge-detection-techniques), [Convolutional layers](#understanding-and-building-convolutional-layers)
+- **Activation functions** (Sigmoid, tanh, ReLU, Leaky ReLU, ELU, SELU) → [Activation functions for CNNs](#activation-functions-for-cnns)
+- **CNN architectures and math** (receptive field, parameter count) → [CNN architectures](#cnn-architectures)
+- **CNN in PyTorch** (`nn.Conv2d`, training loops) → [Deep learning frameworks — PyTorch CV](../10-deep-learning-frameworks/deep-learning-frameworks.md#pytorch-computer-vision)
+- **Data augmentation and pre-trained CNNs** → [Data augmentation](#data-augmentation), [Transfer learning](#transfer-learning)
+- **Transformers in vision (ViT etc.)** → [Computer vision advanced topics](computer-vision-advanced-topics.md)
+
 ## Table of Contents
 
+- [CNN and modern vision curriculum map (this guide)](#cnn-and-modern-vision-curriculum-map-this-guide)
 - [Introduction to Computer Vision](#introduction-to-computer-vision)
+- [Activation functions for CNNs](#activation-functions-for-cnns)
 - [What Are Images and Pixels?](#what-are-images-and-pixels)
 - [Convolution and Edge Detection Techniques](#convolution-and-edge-detection-techniques)
 - [Padding, Strides, and Spatial Arrangement](#padding-strides-and-spatial-arrangement)
@@ -137,6 +150,39 @@ def visualize_cnn_layers():
 - **2020**: Vision Transformers (ViT) - Transformers for images
 - **2021**: CLIP - Contrastive Language-Image Pre-training
 - **2022**: DALL-E 2, Stable Diffusion - Text-to-image generation
+
+---
+
+## Activation functions for CNNs
+
+CNNs stack **linear convolutions + nonlinear activations**. Same families appear in MLPs and RNNs; pick based on depth, saturation, and speed.
+
+| Activation | Output range | Typical use in CNNs |
+|--------------|--------------|---------------------|
+| **Sigmoid** | (0, 1) | Binary heads; avoid many stacked sigmoids (vanishing gradient) |
+| **tanh** | (-1, 1) | Older nets; zero-centered but can saturate |
+| **ReLU** | [0, ∞) | Default hidden activation (sparse, fast) |
+| **Leaky ReLU** | (-∞, ∞) | Mitigates “dying ReLU” with small negative slope |
+| **ELU** | (-α, ∞) | Smooth negatives; can improve generalization |
+| **SELU** | self-normalizing | With **LeCun normal** init and proper architecture, can stabilize training |
+
+```python
+import torch
+import torch.nn as nn
+
+# PyTorch modules (use inside nn.Sequential or custom forward)
+acts = nn.ModuleDict({
+    "sigmoid": nn.Sigmoid(),
+    "tanh": nn.Tanh(),
+    "relu": nn.ReLU(),
+    "leaky_relu": nn.LeakyReLU(0.01),
+    "elu": nn.ELU(alpha=1.0),
+    "selu": nn.SELU(),  # use with nn.init.xavier_normal_ / LeCun and eval drop behavior per docs
+})
+x = torch.randn(4, 16, 32, 32)  # NCHW
+for name, f in acts.items():
+    print(name, f(x).min().item(), f(x).max().item())
+```
 
 ---
 

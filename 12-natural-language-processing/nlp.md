@@ -2,11 +2,27 @@
 
 Comprehensive guide to processing and understanding human language.
 
+## CNN and RNN curriculum map (this guide)
+
+**CNNs** are covered in [Computer vision](../11-computer-vision/computer-vision.md#cnn-and-modern-vision-curriculum-map-this-guide) (this guide focuses on **sequences**, RNNs, LSTM/GRU, and **Transformers**). **PyTorch** patterns: [Frameworks guide](../10-deep-learning-frameworks/deep-learning-frameworks.md#cnn-and-rnn-curriculum-map-pytorch).
+
+- **Introduction to RNN; forward propagation; RNN types** → [RNNs and LSTMs](#rnns-and-lstms)
+- **Activations (Sigmoid, tanh, ReLU, Leaky ReLU, ELU, SELU)** → [Activation functions in sequence models](#activation-functions-in-sequence-models)
+- **LSTM architecture; GRU; bidirectional RNN** → [RNNs and LSTMs](#rnns-and-lstms)
+- **Hyperparameter tuning** (hidden size, layers, dropout, LR, early stopping) → [Hyperparameter tuning for sequences](#hyperparameter-tuning-for-sequences)
+- **Data handling in PyTorch** (padding, `DataLoader`, `collate_fn`) → [Sequence data and PyTorch](#sequence-data-and-pytorch)
+- **Transformers and modern deep learning**; **self-attention, scaled dot-product**; **encoder, decoder, inference** → [Transformers](#transformers)
+- **Projects** (hate speech BERT, skin lesion CNN, tweet sentiment, text generation) → [Advanced NLP / CV projects](../18-projects-advanced/README.md#cnn-and-rnn-curriculum-map-projects)
+
 ## Table of Contents
 
+- [CNN and RNN curriculum map (this guide)](#cnn-and-rnn-curriculum-map-this-guide)
 - [Introduction to NLP](#introduction-to-nlp)
 - [Text Preprocessing](#text-preprocessing)
 - [Word Embeddings](#word-embeddings)
+- [Sequence data and PyTorch](#sequence-data-and-pytorch)
+- [Activation functions in sequence models](#activation-functions-in-sequence-models)
+- [Hyperparameter tuning for sequences](#hyperparameter-tuning-for-sequences)
 - [RNNs and LSTMs](#rnns-and-lstms)
 - [Transformers](#transformers)
 - [NLP Tasks](#nlp-tasks)
@@ -275,7 +291,68 @@ except ImportError:
 
 ---
 
+## Sequence data and PyTorch
+
+Pad token IDs to a fixed length (or use `pack_padded_sequence`), batch with **`DataLoader`**, optionally use a **`collate_fn`** that pads on the fly.
+
+```python
+import torch
+from torch.nn.utils.rnn import pad_sequence
+from torch.utils.data import DataLoader, Dataset
+
+class TextDataset(Dataset):
+    def __init__(self, sequences):
+        self.sequences = [torch.tensor(s, dtype=torch.long) for s in sequences]
+
+    def __len__(self):
+        return len(self.sequences)
+
+    def __getitem__(self, idx):
+        return self.sequences[idx]
+
+def collate_batch(batch):
+    # pad_sequence adds 0 padding on the left by default; often use batch_first=True
+    padded = pad_sequence(batch, batch_first=True, padding_value=0)
+    lengths = torch.tensor([len(x) for x in batch])
+    return padded, lengths
+
+ds = TextDataset([[1, 2, 3], [9], [4, 5]])
+loader = DataLoader(ds, batch_size=2, shuffle=False, collate_fn=collate_batch)
+for batch, lens in loader:
+    print("batch", batch.shape, "lengths", lens)
+```
+
+---
+
+## Activation functions in sequence models
+
+Same catalog as in CNNs: **Sigmoid / tanh / ReLU / LeakyReLU / ELU / SELU**. RNN/LSTM/GRU **gates** use sigmoid and tanh internally; hidden states often use **tanh** (LSTM cell) or depend on implementation. See the [CNN activation table](../11-computer-vision/computer-vision.md#activation-functions-for-cnns) for ranges and PyTorch module names.
+
+---
+
+## Hyperparameter tuning for sequences
+
+Typical knobs: **embedding dimension**, **hidden size**, **number of RNN layers**, **dropout** / recurrent dropout, **learning rate** and scheduler, **batch size**, **max sequence length**, **early stopping** on validation loss or task metric. Use **Keras callbacks** (`EarlyStopping`, `ReduceLROnPlateau`) or PyTorch manual loops with the same idea.
+
+```text
+Keras / TensorFlow: pass callbacks into model.fit(..., callbacks=[...]) — see the LSTM
+sentiment example below for EarlyStopping and ReduceLROnPlateau wired end-to-end.
+```
+
+---
+
 ## RNNs and LSTMs
+
+### Introduction to RNN
+
+An **RNN** maintains a **hidden state** `h_t` updated from the previous step and the current input `x_t`. Unlike a feed-forward net, it shares weights across time and can model **order**.
+
+### Forward propagation and types of RNN
+
+- **Forward pass:** for each time step `t`, compute `h_t = f(W_x x_t + W_h h_{t-1} + b)` then optional output `y_t`.
+- **One-to-many:** single input vector → sequence output (e.g., image captioning seed).
+- **Many-to-one:** sequence → single label (e.g., **sentiment** from a review).
+- **Many-to-many:** sequence in → sequence out aligned (e.g., POS tagging) or encoder–decoder (e.g., **translation**).
 
 ### Why RNNs for Text?
 
@@ -296,10 +373,13 @@ rnn_layer = layers.SimpleRNN(64, return_sequences=True)
 
 Solves vanishing gradient problem with gates.
 
-**LSTM Gates:**
-- **Forget Gate**: What to forget
-- **Input Gate**: What to store
-- **Output Gate**: What to output
+**LSTM gates and cell state:**
+- **Cell state** `C_t`: long-term memory carried along the sequence.
+- **Forget gate** `f_t`: what to erase from the previous cell state `C_{t-1}` (previous step).
+- **Input gate** `i_t` + **candidate cell** `C_tilde`: what new information to write.
+- **Output gate** `o_t`: what to expose as hidden state `h_t`.
+
+Together they implement **additive** updates to `C_t`, which reduces gradient decay compared to a vanilla RNN.
 
 ### LSTM for Sentiment Analysis
 
@@ -382,6 +462,10 @@ model = keras.Sequential([
 ])
 ```
 
+### Advanced stacked RNNs
+
+Stack multiple recurrent layers by returning full sequences from lower layers (`return_sequences=True`) and optionally use **CuDNN-optimized** implementations when shapes and dtypes match (TensorFlow `LSTM(..., implementation=2)` / PyTorch built-ins on GPU). **Bidirectional** wrappers (above) fuse forward and backward passes for richer context.
+
 ---
 
 ## Transformers
@@ -400,6 +484,36 @@ model = keras.Sequential([
 - **Multi-Head Attention**: Multiple attention mechanisms
 - **Position Encoding**: Inject position information
 - **Feed-Forward Networks**: Process attended features
+
+### Self-attention and scaled dot-product attention
+
+For each position, build queries **Q**, keys **K**, values **V** from learned linear projections of the input. **Scaled dot-product attention**:
+
+```
+Attention(Q, K, V) = softmax(Q K^T / sqrt(d_k)) V
+```
+
+The **scale** `sqrt(d_k)` keeps dot products from growing too large (softmax saturates). **Multi-head** attention runs several attention blocks in parallel and concatenates results.
+
+```python
+import torch
+import torch.nn.functional as F
+
+batch, seq, d = 2, 5, 8
+Q = torch.randn(batch, seq, d)
+K = torch.randn(batch, seq, d)
+V = torch.randn(batch, seq, d)
+scores = Q @ K.transpose(-2, -1) / (d ** 0.5)
+attn = F.softmax(scores, dim=-1)
+out = attn @ V
+print(out.shape)  # (batch, seq, d)
+```
+
+### Transformer encoder, decoder, and inference
+
+- **Encoder:** stack of self-attention + feed-forward blocks; used in **BERT** (encoder-only) for classification and representation.
+- **Decoder:** masked self-attention so position `t` cannot attend to future tokens; cross-attention to encoder outputs in **seq2seq** (e.g., original translation Transformer).
+- **Inference (generation):** autoregressive decoding—feed previously generated tokens, sample or argmax next token, stop at `<eos>` or max length. Libraries like **Hugging Face** `generate()` wrap this loop.
 
 ### Using Hugging Face
 

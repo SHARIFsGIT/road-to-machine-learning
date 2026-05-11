@@ -11,6 +11,19 @@ Before starting these projects, you should have completed:
 - Phase 3: Supervised Learning - Regression
 - Phase 4: Supervised Learning - Classification
 
+## ML for beginners curriculum map (projects)
+
+Use these projects to **implement algorithms in context** (regression, classification, cleaning, feature work). Cross-check concepts with the [intro map](../02-introduction-to-ml/introduction-to-ml.md#ml-for-beginners-curriculum-map-this-guide).
+
+| Practice focus | Project |
+|----------------|---------|
+| Regression, metrics, end-to-end pipeline | [House price prediction](project-01-house-price-prediction/README.md) |
+| Classification, multiple algorithms | [Iris classification](project-02-iris-classification/README.md) |
+| EDA, cleaning, feature engineering, classification | [Titanic survival](project-03-titanic-survival/README.md) |
+| Text features, classification | [Spam detection](project-04-spam-detection/README.md) |
+| Regression on tabular physicochemical data | [Wine quality](project-05-wine-quality/README.md) |
+| Dashboard / reporting (optional extension) | [Customer dashboard](project-06-customer-dashboard/README.md) |
+
 ##  Projects
 
 ### Project 1: House Price Prediction
