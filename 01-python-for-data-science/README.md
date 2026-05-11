@@ -14,6 +14,29 @@ Master the essential Python libraries for data manipulation, analysis, and visua
 - Exploratory Data Analysis (EDA) techniques
 - Working with APIs, databases, and web scraping
 
+## ML toolbox curriculum map
+
+Each line below is covered **with code examples** in the linked guide (same style as the Python basics doc: concept + runnable snippets). The **from-scratch ML project** uses tutorials that combine these tools.
+
+| Topic | Where to study |
+|-------|----------------|
+| **Data processing & visualization (ML toolbox)** | This phase as a whole; start with [NumPy](01-numpy.md#ml-toolbox-curriculum-map-this-guide) → [Pandas](02-pandas.md#ml-toolbox-curriculum-map-this-guide) → [Visualization](03-visualization.md#ml-toolbox-curriculum-map-this-guide) |
+| NumPy fundamentals, `ndarray`, attributes & dtypes | [NumPy → Attributes](01-numpy.md#array-attributes-and-methods), [Creating arrays](01-numpy.md#creating-arrays) |
+| Pandas Series, DataFrame & file handling (CSV/Excel etc.) | [Pandas → Series/DataFrames](02-pandas.md#series-and-dataframes), [Reading/Writing](02-pandas.md#reading-and-writing-data) |
+| Array creation (existing data, scratch, range, random) | [NumPy → Creating arrays](01-numpy.md#creating-arrays) |
+| Data access: indexing, `loc` / `iloc` & filtering | [NumPy → Indexing](01-numpy.md#indexing-and-slicing), [Pandas → Selection](02-pandas.md#data-selection-and-filtering) |
+| Indexing, slicing, copying & advanced iteration | [NumPy → Copies](01-numpy.md#deep-and-shallow-copy), [Pandas patterns](02-pandas.md#data-selection-and-filtering) |
+| Modifying data (add/drop rows & columns, assign values) | [Pandas → cleaning/ops](02-pandas.md#data-cleaning) (drops, assigns); see also DataFrame basics |
+| Array manipulation, reshaping & transformations | [NumPy → Reshape](01-numpy.md#reshaping-and-resizing), [Advanced manipulation](01-numpy.md#advanced-array-manipulation) |
+| Duplicates, missing data & DateTime | [Pandas → Data cleaning](02-pandas.md#data-cleaning), [Time series / datetime](02-pandas.md#time-series-operations) |
+| Arithmetic, mathematical & logical operations | [NumPy → Array operations](01-numpy.md#array-operations), [Mathematical ops](01-numpy.md#mathematical-operations) |
+| Apply, aggregation & GroupBy | [Pandas → Grouping](02-pandas.md#grouping-and-aggregation), [apply / map](02-pandas.md#advanced-tricks-and-performance) |
+| Broadcasting, sorting, searching & counting | [Broadcasting](01-numpy.md#broadcasting), [Sorting & searching](01-numpy.md#sorting-searching-and-counting) |
+| Matplotlib line, scatter, histogram, bar & pie | [Visualization → Plot types](03-visualization.md#common-plot-types) |
+| Statistical analysis & linear algebra basics | [NumPy stats](01-numpy.md#mathematical-operations), [Linear algebra](01-numpy.md#linear-algebra-operations) |
+| **Project: Build an ML model from scratch** | [NumPy NN tutorial](../00-prerequisites/prerequisites-project-tutorial.md), [First ML project](../02-introduction-to-ml/first-ml-project-tutorial.md) |
+| **Next: Machine learning for beginners** | [Intro ML curriculum map](../02-introduction-to-ml/introduction-to-ml.md#ml-for-beginners-curriculum-map-this-guide); EDA in [04-exploratory-data-analysis](04-exploratory-data-analysis.md#ml-for-beginners-curriculum-map-this-guide) |
+
 ##  Modules
 
 ### 01-numpy
@@ -42,7 +65,8 @@ Master Pandas - the most important library for data manipulation.
 - Modifying data: add/drop rows and columns, assign values
 - Handling duplicates, missing data, and datetime operations
 - Apply functions, aggregation, and `GroupBy` analysis
-- Merging and joining DataFrames
+- Merging, joining, and concatenating DataFrames
+- MultiIndex; stack/unstack, `melt`, pivot tables; vectorized string and datetime operations
 - Time series operations
 
 **Time Estimate:** 2 weeks

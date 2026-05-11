@@ -16,11 +16,12 @@ Welcome to the foundation phase! Before diving into machine learning, we need to
 Learn Python from scratch—structured as **AI programming with Python**: core syntax, functional and object-oriented patterns, files, and exceptions before math-heavy ML topics.
 
 **Topics:**
-- Variables, conditional statements, loops, lists, and dictionaries (overview)
-- Functions and functional programming
+- Variables, operators, control flow, strings, lists, tuples, sets, and dictionaries; `import` and modules; `break` / `continue` / `pass`
+- Functions and functional programming; `*args` / `**kwargs`; nested functions and scope
 - Introduction to OOP: classes and objects; class and object theory; class and object implementation
 - Iterators and generators (memory-efficient processing; connects to ML data pipelines); lambda functions; `map`, `filter`, and `reduce`
-- File handling: reading and writing files; read position (`tell`, `seek`)
+- File handling: text and binary I/O; read position (`tell`, `seek`); context managers (`with`); JSON and pickle (tradeoffs vs human-readable formats)
+- Decorators; namespaces and the LEGB scope rule
 - Inheritance and polymorphism; encapsulation and abstraction
 - Practice problems based on file handling
 - Exceptions: `try` / `except` / `else` / `finally`
@@ -62,7 +63,7 @@ Comprehensive statistics and probability theory for ML model evaluation and unde
 - Probability Fundamentals (conditional probability, Bayes' theorem)
 - Probability Distributions (Normal, Binomial, Poisson)
 - Inferential Statistics (sampling, CLT, confidence intervals)
-- Hypothesis Testing (t-tests, chi-square tests)
+- Hypothesis Testing (t-tests, chi-square, ANOVA intuition; p-values and effect size mindset)
 - Applications in Model Evaluation and Feature Analysis
 
 **Time Estimate:** 2-3 weeks

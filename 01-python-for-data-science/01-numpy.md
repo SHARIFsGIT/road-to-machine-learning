@@ -2,8 +2,23 @@
 
 Comprehensive guide to NumPy - the foundation of numerical computing in Python and essential for machine learning.
 
+## ML toolbox curriculum map (this guide)
+
+Use this checklist while you read; each item links to a section **with code** below. Topics that belong to Pandas or Matplotlib are linked to the sibling guides.
+
+- **NumPy fundamentals, `ndarray`, attributes & dtypes** → [Introduction](#introduction), [Creating arrays](#creating-arrays), [Array attributes](#array-attributes-and-methods)
+- **Array creation** (from lists, zeros/ones, ranges, random) → [Creating arrays](#creating-arrays)
+- **Indexing, slicing, data access** → [Indexing and slicing](#indexing-and-slicing), [Deep vs shallow copy](#deep-and-shallow-copy)
+- **Array manipulation & reshaping** → [Reshaping](#reshaping-and-resizing), [Advanced manipulation](#advanced-array-manipulation)
+- **Arithmetic, math & logical ops** (element-wise, comparisons, masks) → [Array operations](#array-operations), [Mathematical operations](#mathematical-operations)
+- **Broadcasting** → [Broadcasting](#broadcasting)
+- **Sorting, searching & counting** → [Sorting, searching, and counting](#sorting-searching-and-counting)
+- **Statistical analysis & linear algebra** → [Statistical functions](#statistical-functions), [Linear algebra](#linear-algebra-operations)
+- **Pandas / plots / CSV workflows** → continue in [Pandas guide](02-pandas.md#ml-toolbox-curriculum-map-this-guide) and [Visualization guide](03-visualization.md#ml-toolbox-curriculum-map-this-guide)
+
 ## Table of Contents
 
+- [ML toolbox curriculum map (this guide)](#ml-toolbox-curriculum-map-this-guide)
 - [Introduction](#introduction)
 - [Creating Arrays](#creating-arrays)
 - [Array Attributes and Methods](#array-attributes-and-methods)
@@ -12,6 +27,7 @@ Comprehensive guide to NumPy - the foundation of numerical computing in Python a
 - [Indexing and Slicing](#indexing-and-slicing)
 - [Deep and Shallow Copy](#deep-and-shallow-copy)
 - [Broadcasting](#broadcasting)
+- [Sorting, Searching, and Counting](#sorting-searching-and-counting)
 - [Mathematical Operations](#mathematical-operations)
 - [Linear Algebra Operations](#linear-algebra-operations)
 - [Advanced Array Manipulation](#advanced-array-manipulation)
@@ -579,6 +595,44 @@ print(result)
 # Output:
 # [[11 12 13]
 #  [24 25 26]]
+```
+
+---
+
+## Sorting, Searching, and Counting
+
+```python
+import numpy as np
+
+arr = np.array([3, 1, 4, 1, 5, 9, 2, 6])
+
+# Sorting (returns a copy by default)
+print(np.sort(arr))
+# [1 1 2 3 4 5 6 9]
+
+# Indices that would sort the original array
+idx = np.argsort(arr)
+print(idx)  # use arr[idx] to get sorted values
+
+# Searchsorted: insert positions to keep order (binary search on sorted data)
+sorted_arr = np.array([1, 3, 5, 7, 9])
+positions = np.searchsorted(sorted_arr, [2, 4, 8])
+print(positions)  # where each value would be inserted
+
+# Counting: nonzero elements matching a condition
+mask = arr > 4
+print(np.count_nonzero(mask))
+print(np.sum(mask))  # same for boolean arrays
+
+# Unique values and counts
+values, counts = np.unique(arr, return_counts=True)
+print(values, counts)
+
+# Logical combinations (element-wise)
+a = np.array([True, False, True])
+b = np.array([False, False, True])
+print(np.logical_and(a, b))
+print(np.logical_or(a, b))
 ```
 
 ---

@@ -2,8 +2,23 @@
 
 Comprehensive guide to Pandas - the most important library for data manipulation and analysis in Python.
 
+## ML toolbox curriculum map (this guide)
+
+Checklist aligned with the **ML toolbox** path; each item points to sections **with code** below. Numeric arrays and broadcasting are in the [NumPy guide](01-numpy.md#ml-toolbox-curriculum-map-this-guide).
+
+- **Pandas Series, DataFrame & file handling (CSV/Excel etc.)** → [Series and DataFrames](#series-and-dataframes), [Reading and writing data](#reading-and-writing-data)
+- **Data access: indexing, `loc` / `iloc` & filtering** → [Data selection and filtering](#data-selection-and-filtering)
+- **Indexing, slicing, copying & iteration patterns** → [Data selection and filtering](#data-selection-and-filtering), [DataFrame basics](#dataframe-basics-and-inspection)
+- **Modifying data** (add/drop rows & columns, assign values) → [Data cleaning](#data-cleaning) (drops, fills), [Data selection](#data-selection-and-filtering) (updates via `loc` / `iloc`)
+- **Duplicates, missing data & datetime** → [Data cleaning](#data-cleaning), [Time series operations](#time-series-operations)
+- **Sorting & basic statistics** → [Sorting and basic statistics](#sorting-and-basic-statistics)
+- **Apply functions, aggregation & GroupBy** → [Grouping and aggregation](#grouping-and-aggregation), [Advanced tricks (apply / map)](#advanced-tricks-and-performance)
+- **Merging tables** → [Merging and joining](#merging-and-joining)
+- **Plots & NumPy numerics** → [Visualization guide](03-visualization.md#ml-toolbox-curriculum-map-this-guide)
+
 ## Table of Contents
 
+- [ML toolbox curriculum map (this guide)](#ml-toolbox-curriculum-map-this-guide)
 - [Introduction](#introduction)
 - [Series and DataFrames](#series-and-dataframes)
 - [DataFrame Basics and Inspection](#dataframe-basics-and-inspection)

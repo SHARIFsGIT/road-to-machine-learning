@@ -2,8 +2,18 @@
 
 Comprehensive guide to performing systematic exploratory data analysis to understand your data before modeling.
 
+## ML for beginners curriculum map (this guide)
+
+EDA and **data cleaning** sit between loading data and training models. Use this map with the [ML intro beginner track](../02-introduction-to-ml/introduction-to-ml.md#ml-for-beginners-curriculum-map-this-guide).
+
+- **EDA workflow and data cleaning** → [EDA workflow](#eda-workflow), [Understanding your data](#understanding-your-data), [Data quality checks](#data-quality-checks)
+- **Distribution views** (histograms, boxplots) → [Univariate analysis](#univariate-analysis)
+- **Feature relationships** (scatter, covariance-style checks) → [Bivariate analysis](#bivariate-analysis), [Multivariate analysis](#multivariate-analysis)
+- **Regression and classification next** → [Regression](../03-supervised-learning-regression/regression.md#ml-for-beginners-curriculum-map-this-guide), [Classification](../04-supervised-learning-classification/classification.md#ml-for-beginners-curriculum-map-this-guide)
+
 ## Table of Contents
 
+- [ML for beginners curriculum map (this guide)](#ml-for-beginners-curriculum-map-this-guide)
 - [Introduction](#introduction)
 - [EDA Workflow](#eda-workflow)
 - [Understanding Your Data](#understanding-your-data)

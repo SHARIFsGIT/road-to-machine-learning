@@ -2,8 +2,16 @@
 
 Comprehensive guide to Matplotlib and Seaborn for creating beautiful and informative visualizations.
 
+## ML toolbox curriculum map (this guide)
+
+Short map for the **visualization** part of the ML toolbox (all with plotting code below).
+
+- **Matplotlib: line, scatter, histogram, bar & pie** → [Common plot types](#common-plot-types) (Matplotlib), plus Seaborn variants in later sections
+- **Underlying data prep** → [NumPy](01-numpy.md#ml-toolbox-curriculum-map-this-guide) and [Pandas](02-pandas.md#ml-toolbox-curriculum-map-this-guide) guides
+
 ## Table of Contents
 
+- [ML toolbox curriculum map (this guide)](#ml-toolbox-curriculum-map-this-guide)
 - [Introduction](#introduction)
 - [Matplotlib Basics](#matplotlib-basics)
 - [Figure and Axes Structure](#figure-and-axes-structure)
