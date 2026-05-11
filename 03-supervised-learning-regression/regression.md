@@ -2,13 +2,28 @@
 
 Comprehensive guide to regression algorithms for predicting continuous values.
 
+## ML for beginners curriculum map (this guide)
+
+Beginner-friendly checklist; each line links to **code** below or to the intro foundations.
+
+- **Linear regression and evaluation metrics** → [Linear regression](#linear-regression), [Evaluation metrics](#evaluation-metrics)
+- **Multiple and polynomial regression** → [Linear regression](#linear-regression) (multiple features), [Polynomial regression](#polynomial-regression)
+- **Data distribution analysis** (percentiles, histogram, boxplot) → [Data distribution analysis](#data-distribution-analysis)
+- **Feature relationships** (scatter, covariance, correlation) → [Feature relationship analysis](#feature-relationship-analysis)
+- **End-to-end persistence** (save and load model) → [End-to-end train, evaluate, and persist](#end-to-end-train-evaluate-and-persist)
+- **Statistics foundations** → [Introduction to ML — descriptive stats](../02-introduction-to-ml/introduction-to-ml.md#descriptive-statistics-and-sampling-foundations)
+
 ## Table of Contents
 
+- [ML for beginners curriculum map (this guide)](#ml-for-beginners-curriculum-map-this-guide)
 - [Introduction to Regression](#introduction-to-regression)
 - [Linear Regression](#linear-regression)
 - [Polynomial Regression](#polynomial-regression)
 - [Regularization](#regularization)
 - [Evaluation Metrics](#evaluation-metrics)
+- [Data distribution analysis](#data-distribution-analysis)
+- [Feature relationship analysis](#feature-relationship-analysis)
+- [End-to-end train, evaluate, and persist](#end-to-end-train-evaluate-and-persist)
 - [Practice Exercises](#practice-exercises)
 
 ---
@@ -487,6 +502,89 @@ def evaluate_regression(y_true, y_pred):
     return {'MSE': mse, 'RMSE': rmse, 'MAE': mae, 'R²': r2}
 
 metrics = evaluate_regression(y_test, y_pred)
+```
+
+---
+
+## Data distribution analysis
+
+Use **percentiles**, **histograms**, and **boxplots** to check skew, outliers, and whether targets or residuals look reasonable before and after modeling.
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(0)
+# Toy target: house prices in $1000s (right-skewed log-normal style)
+prices = rng.lognormal(mean=4.5, sigma=0.35, size=500)
+
+print("Percentiles (5, 25, 50, 75, 95):", np.percentile(prices, [5, 25, 50, 75, 95]))
+
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+axes[0].hist(prices, bins=30, color="steelblue", edgecolor="white")
+axes[0].set_title("Histogram of target")
+axes[0].set_xlabel("Price ($1000s)")
+
+axes[1].boxplot(prices, vert=True)
+axes[1].set_title("Boxplot of target")
+plt.tight_layout()
+plt.show()
+```
+
+---
+
+## Feature relationship analysis
+
+**Scatter plots** show pairs of variables; **covariance** and **correlation** summarize linear association (Pearson correlation is scaled covariance).
+
+```python
+import numpy as np
+import pandas as pd
+
+rng = np.random.default_rng(1)
+x = rng.normal(0, 1, 200)
+y = 0.7 * x + rng.normal(0, 0.5, 200)  # correlated noise
+df = pd.DataFrame({"x": x, "y": y})
+
+print(df.cov())    # covariance matrix
+print(df.corr())   # Pearson correlation matrix
+
+import matplotlib.pyplot as plt
+plt.scatter(df["x"], df["y"], alpha=0.4)
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Scatter: feature vs synthetic target")
+plt.show()
+```
+
+---
+
+## End-to-end train, evaluate, and persist
+
+Minimal **save → load → predict** flow (real deployment adds APIs, monitoring, and versioning—see the [model deployment](../13-model-deployment/README.md) module).
+
+```python
+from pathlib import Path
+import numpy as np
+import joblib
+from sklearn.datasets import fetch_california_housing
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+
+X, y = fetch_california_housing(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print("RMSE:", np.sqrt(mean_squared_error(y_test, y_pred)))
+print("R2:", r2_score(y_test, y_pred))
+
+artifact = Path("regression_model.joblib")
+joblib.dump(model, artifact)
+loaded = joblib.load(artifact)
+print("Same preds?", np.allclose(loaded.predict(X_test[:5]), model.predict(X_test[:5])))
 ```
 
 ---

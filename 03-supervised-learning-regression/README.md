@@ -10,6 +10,17 @@ Learn to predict continuous values using regression algorithms.
 - Evaluation Metrics for Regression
 - Real-world Regression Projects
 
+## ML for beginners curriculum map
+
+| Topic | Where to study |
+|-------|----------------|
+| Linear regression and evaluation metrics | [Regression guide](regression.md#linear-regression), [Evaluation metrics](regression.md#evaluation-metrics) |
+| Multiple and polynomial regression | [Linear regression](regression.md#linear-regression), [Polynomial regression](regression.md#polynomial-regression) |
+| Data distribution analysis (percentiles, histogram, boxplot) | [Data distribution analysis](regression.md#data-distribution-analysis) |
+| Feature relationships (scatter, covariance, correlation) | [Feature relationship analysis](regression.md#feature-relationship-analysis) |
+| End-to-end regression and saving a model | [Train, evaluate, persist](regression.md#end-to-end-train-evaluate-and-persist), [Project tutorial](regression-project-tutorial.md) |
+| Descriptive stats / sampling | [Introduction to ML](../02-introduction-to-ml/introduction-to-ml.md#descriptive-statistics-and-sampling-foundations) |
+
 ##  Topics Covered
 
 ### 1. Linear Regression

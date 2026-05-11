@@ -2,10 +2,28 @@
 
 Comprehensive guide to understanding machine learning fundamentals, types, workflow, and applications.
 
+## ML for beginners curriculum map (this guide)
+
+Use this list as a **beginner track**; each item links to a section **with code** in this file or in the next modules.
+
+- **Machine learning for beginners** → [What is ML?](#what-is-machine-learning), [Types of ML](#types-of-machine-learning), [Workflow](#machine-learning-workflow)
+- **Data types in ML** (numeric, categorical, text, time; targets vs features) → [Key concepts](#key-concepts)
+- **Population vs sample** → [Descriptive statistics and sampling foundations](#descriptive-statistics-and-sampling-foundations)
+- **Batch vs online updates**; **instance-based vs model-based** learners → [Training settings and learner families](#training-settings-and-learner-families)
+- **Descriptive statistics** (mean, median, mode, variance, standard deviation) → [Descriptive statistics and sampling foundations](#descriptive-statistics-and-sampling-foundations)
+- **Regression next** (linear, metrics, distributions, saving models) → [Regression guide](../03-supervised-learning-regression/regression.md#ml-for-beginners-curriculum-map-this-guide)
+- **Classification next** (logistic, KNN, Naive Bayes, metrics) → [Classification guide](../04-supervised-learning-classification/classification.md#ml-for-beginners-curriculum-map-this-guide)
+- **EDA and cleaning** → [EDA guide](../01-python-for-data-science/04-exploratory-data-analysis.md#ml-for-beginners-curriculum-map-this-guide)
+- **Feature engineering and ML-ready preprocessing** → [Feature engineering guide](../07-feature-engineering/feature-engineering.md#ml-for-beginners-curriculum-map-this-guide)
+- **Projects (implement algorithms in context)** → [Beginner projects](../16-projects-beginner/README.md#ml-for-beginners-curriculum-map-projects)
+
 ## Table of Contents
 
+- [ML for beginners curriculum map (this guide)](#ml-for-beginners-curriculum-map-this-guide)
+- [Descriptive statistics and sampling foundations](#descriptive-statistics-and-sampling-foundations)
 - [What is Machine Learning?](#what-is-machine-learning)
 - [Types of Machine Learning](#types-of-machine-learning)
+- [Training settings and learner families](#training-settings-and-learner-families)
 - [Machine Learning Workflow](#machine-learning-workflow)
 - [Key Concepts](#key-concepts)
 - [Real-World Applications](#real-world-applications)
@@ -286,6 +304,22 @@ X_reduced = pca.fit_transform(X)
 | **Unsupervised** | Unlabeled (X only) | Find patterns | Customer groups |
 | **Reinforcement** | Experience | Maximize rewards | Game playing |
 
+### Training settings and learner families
+
+These labels show up in courses and papers; they are **orthogonal** to supervised vs unsupervised (they describe *how* training runs and *what* is stored).
+
+**Batch vs online (incremental) learning**
+
+- **Batch / offline**: The model sees a large (or full) dataset each update, or you train on fixed snapshots. Most sklearn examples are batch: `fit(X, y)` on a matrix you already hold.
+- **Online / streaming / incremental**: New labeled rows arrive over time; you update the model in small steps without reloading everything. Useful for feeds, sensors, and fraud—often paired with careful drift monitoring (later: MLOps modules).
+
+**Instance-based vs model-based**
+
+- **Instance-based** learners memorize training examples (or a subset) and decide by *similarity at prediction time* (classic: **k-NN**). More data at serving time can mean more storage and slower queries.
+- **Model-based** learners compress the data into parameters (weights, tree rules, etc.): **linear models, forests, neural nets**. Prediction is usually fast once parameters are fixed.
+
+You will meet both families again when you choose metrics, validation splits, and deployment constraints.
+
 ---
 
 ## Machine Learning Workflow
@@ -460,6 +494,60 @@ def predict():
 - Data drift
 - Prediction quality
 - System performance
+
+---
+
+## Descriptive statistics and sampling foundations
+
+These ideas show up in **every** ML project: you summarize data you have (a **sample**) and hope it reflects the **population** you care about.
+
+### Mean, median, mode, variance, and standard deviation
+
+```python
+import numpy as np
+import pandas as pd
+
+scores = np.array([72, 85, 90, 68, 88, 91, 77, 84])
+
+print("mean:", scores.mean())
+print("median:", np.median(scores))
+# mode for continuous data is less common; for discrete counts use pandas
+s = pd.Series([2, 2, 3, 3, 3, 4])
+print("mode:", s.mode().tolist())
+print("variance (sample):", scores.var(ddof=1))   # unbiased sample variance
+print("std (sample):", scores.std(ddof=1))
+
+# Percentiles / quartiles (distribution shape)
+print("25th, 50th, 75th:", np.percentile(scores, [25, 50, 75]))
+```
+
+### Population vs sample (intuition + simulation)
+
+- **Population**: all units you *could* measure (often unknown or infinite).
+- **Sample**: the subset you *actually* collected and train on.
+
+```python
+rng = np.random.default_rng(42)
+# True population: normal with mean 100, std 15 (toy example)
+population = rng.normal(100, 15, size=100_000)
+
+# One random sample of 200 people
+sample = rng.choice(population, size=200, replace=False)
+print("Population mean (known in simulation):", population.mean())
+print("Sample mean:", sample.mean())
+# Sample mean changes each draw; larger samples usually get closer to population mean.
+```
+
+### Data types in ML (quick reference)
+
+| Kind | Examples | Typical use |
+|------|-----------|-------------|
+| Numeric continuous | height, price | regression targets, features |
+| Numeric discrete | count of clicks | regression or classification features |
+| Categorical nominal | country code | encoding then models |
+| Categorical ordinal | survey Likert scale | ordered encoding |
+| Text | email body | NLP pipelines |
+| Time | timestamps | time-series features |
 
 ---
 

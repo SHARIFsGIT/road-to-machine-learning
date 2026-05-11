@@ -9,6 +9,17 @@ Understand what machine learning is, how it works, and the different types of ML
 - ML Workflow and Best Practices
 - Real-world Applications
 
+## ML for beginners curriculum map
+
+| Topic | Where to study (examples in guide) |
+|-------|-------------------------------------|
+| Machine learning for beginners | [Complete guide](introduction-to-ml.md#ml-for-beginners-curriculum-map-this-guide) |
+| Data types in ML; population vs sample | [Key concepts](introduction-to-ml.md#key-concepts), [Descriptive statistics and sampling](introduction-to-ml.md#descriptive-statistics-and-sampling-foundations) |
+| Descriptive statistics (mean, median, mode, variance, std) | [Descriptive statistics and sampling](introduction-to-ml.md#descriptive-statistics-and-sampling-foundations) |
+| Types of ML; workflow; first project | [Topics covered](#topics-covered) in this README; [First ML project](first-ml-project-tutorial.md) |
+| Next: regression, classification, EDA, features | [Regression](../03-supervised-learning-regression/regression.md#ml-for-beginners-curriculum-map-this-guide), [Classification](../04-supervised-learning-classification/classification.md#ml-for-beginners-curriculum-map-this-guide), [EDA](../01-python-for-data-science/04-exploratory-data-analysis.md#ml-for-beginners-curriculum-map-this-guide), [Feature engineering](../07-feature-engineering/feature-engineering.md#ml-for-beginners-curriculum-map-this-guide) |
+| Projects implementing algorithms | [Beginner projects](../16-projects-beginner/README.md#ml-for-beginners-curriculum-map-projects) |
+
 ##  Topics Covered
 
 ### What is Machine Learning?
