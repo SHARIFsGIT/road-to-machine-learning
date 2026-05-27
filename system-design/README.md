@@ -1,6 +1,6 @@
 # System Design for Beginners
 
-Notes I'm writing as I go through "System Design for Beginners" (22 lessons). Each file is a chapter you can read on its own. No video required.
+Notes I'm writing as I go through "System Design for Beginners" (31 lessons: 22 foundations + 9 interview-style designs). Each file is a chapter you can read on its own. No video required.
 
 The goal is not to memorize buzzwords. By the end you should be able to look at a product like Twitter or Uber and have a rough idea of what's running behind the scenes, and why.
 
@@ -61,6 +61,19 @@ If you already work in software, jump around. The CAP, sharding, and message que
 
 ### Capstone
 - [21. Designing Systems](./21-designing-systems.md) — how to run a design from requirements to boxes to deep dives; URL shortener walkthrough
+
+### Interview-style designs
+Practice problems using the four-step process from Chapter 21. Each one is original, written from scratch, with the same structure: clarify, estimate, high-level, deep dives.
+
+- [22. Design a Rate Limiter](./22-design-rate-limiter.md)
+- [23. Design a Social Feed](./23-design-social-feed.md)
+- [24. Design a Group Chat System](./24-design-group-chat.md)
+- [25. Design a Video Streaming Platform](./25-design-video-streaming.md)
+- [26. Design a Cloud File Storage Service](./26-design-cloud-file-storage.md)
+- [27. Design a Maps and Navigation Service](./27-design-maps-and-navigation.md)
+- [28. Design a Distributed Key-Value Store](./28-design-key-value-store.md)
+- [29. Design a Distributed Message Queue](./29-design-distributed-message-queue.md)
+- [30. Design a Real-Time ML Feature Store](./30-design-realtime-feature-store.md) — the ML-flavored one you won't find in most courses
 
 ## Books and resources I keep coming back to
 
