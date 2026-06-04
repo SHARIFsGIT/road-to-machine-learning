@@ -1,18 +1,32 @@
 # Road to ML: From Zero to Hero
 
 <div align="center">
+
 [![GitHub stars](https://img.shields.io/github/stars/NabidAlam/road-to-machine-learning?style=social)](https://github.com/NabidAlam/road-to-machine-learning/stargazers)
+
 [![GitHub forks](https://img.shields.io/github/forks/NabidAlam/road-to-machine-learning?style=social)](https://github.com/NabidAlam/road-to-machine-learning/network/members)
+
 [![GitHub issues](https://img.shields.io/github/issues/NabidAlam/road-to-machine-learning)](https://github.com/NabidAlam/road-to-machine-learning/issues)
+
 [![GitHub license](https://img.shields.io/github/license/NabidAlam/road-to-machine-learning)](https://github.com/NabidAlam/road-to-machine-learning/blob/main/LICENSE)
+
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
 [![Subscribe on YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?logo=youtube&logoColor=white)](https://www.youtube.com/@NabidInMotion?sub_confirmation=1)
+
+
 
 **A comprehensive, step-by-step guide to learning Machine Learning from absolute basics to advanced topics**
 
+
+
 *Perfect for beginners • 26 Learning Modules • 23 Real-World Projects • Production-Ready Skills*
 
+
+
 [Get Started](#getting-started) • [Learning Path](#learning-path) • [Projects](#phase-9-projects) • [System Design](system-design/README.md) • [Full-stack AI](resources/career_roadmap_guide.md#full-stack-ai-engineer) • [Contribute](#contributing)
+
+
 
 </div>
 
